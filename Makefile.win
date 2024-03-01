@@ -1,0 +1,35 @@
+# Project: 广州市乘地铁售票程序 GZ-Metro
+# Makefile created by Dev-C++ 6.5
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o menu.o function.o
+LINKOBJ  = main.o menu.o function.o
+LIBS     = -L"H:/Dev-Cpp/MinGW32/lib" -L"H:/Dev-Cpp/MinGW32/i686-w64-mingw32/lib" -static-libstdc++ -static-libgcc -g3
+INCS     = -I"H:/Dev-Cpp/MinGW32/include" -I"H:/Dev-Cpp/MinGW32/i686-w64-mingw32/include" -I"H:/Dev-Cpp/MinGW32/lib/gcc/i686-w64-mingw32/10.2.0/include" -I"H:/Dev-Cpp/MinGW32/lib/gcc/i686-w64-mingw32/10.2.0/include-fixed"
+CXXINCS  = -I"H:/Dev-Cpp/MinGW32/include" -I"H:/Dev-Cpp/MinGW32/i686-w64-mingw32/include" -I"H:/Dev-Cpp/MinGW32/lib/gcc/i686-w64-mingw32/10.2.0/include" -I"H:/Dev-Cpp/MinGW32/lib/gcc/i686-w64-mingw32/10.2.0/include-fixed" -I"H:/Dev-Cpp/MinGW32/include/c++/10.2.0" -I"H:/Dev-Cpp/MinGW32/include/c++/10.2.0/i686-w64-mingw32" -I"H:/Dev-Cpp/MinGW32/include/c++/10.2.0/backward"
+BIN      = "广州市乘地铁售票程序 GZ-Metro.exe"
+CXXFLAGS = $(CXXINCS) -Wall -Wextra -g3
+ENCODINGS = -finput-charset=utf-8 -fexec-charset=gbk
+CFLAGS   = $(INCS) -Wall -Wextra -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c all.h
+	$(CPP) -c main.c -o main.o $(CXXFLAGS) 
+
+menu.o: menu.c all.h
+	$(CPP) -c menu.c -o menu.o $(CXXFLAGS) 
+
+function.o: function.c all.h
+	$(CPP) -c function.c -o function.o $(CXXFLAGS) 
